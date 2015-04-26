@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="tiles_template"
+		template="/WEB-INF/views/tiles_templates/tiles_template.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles_templates/header.jsp" />
+		<put-attribute name="navigation_bar"
+			value="/WEB-INF/views/tiles_templates/navigation_bar.jsp" />
+		<put-attribute name="messages"
+			value="/WEB-INF/views/tiles_templates/messages.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles_templates/footer.jsp" />
+	</definition>
+	
+	<definition name="account/login" template="/WEB-INF/views/account/login.jsp">
+    </definition>
+    
+    <definition name="websocket/vnc" template="/WEB-INF/views/websocket/vnc.jsp">
+    </definition>
+
+    <definition name="*" extends="tiles_template">
+        <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+    </definition>
+
+    <definition name="*/*" extends="tiles_template">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+</tiles-definitions>

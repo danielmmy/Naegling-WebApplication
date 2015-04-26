@@ -1,0 +1,19 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+
+	<on-start>
+		<evaluate expression="editNodeController.initializeForm(flowRequestContext)" result="flowScope.editNodeForm"/>
+	</on-start>
+
+	<view-state id="editNode" view="editNode/edit" model="editNodeForm">
+		<transition on="confirm" to="end" >
+			<evaluate expression="editNodeController.editNode(flowScope.editNodeForm)"/>
+		</transition>
+		<transition on="cancel" to="end" />
+	</view-state>
+	
+	<end-state id="end" view="redirect:/index.htm"/>
+</flow>	
+	
